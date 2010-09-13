@@ -1,0 +1,12 @@
+DESCRIPTION="Simulator for AVR microcontrollers"
+HOMEPAGE="http://www.nongnu.org/simulavr/"
+SRC_URI="mirror://savannah/simulavr/${P}.tar.gz"
+PATCH_URI="http://cvs.fedoraproject.org/viewvc/devel/simulavr/0001-Allow-overriding-ENABLE_WARNINGS.patch?view=co"
+
+CFLAGS+=" -I/usr/include/ncurses"
+
+src_compile() {
+	cd ${B}
+	cygconf --disable-versioned-doc
+	cygmake ENABLE_WARNINGS=
+}
